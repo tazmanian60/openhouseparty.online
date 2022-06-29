@@ -2,9 +2,21 @@
 drop table if exists user;
 create table user (
   user_id integer primary key autoincrement,
-  user_name text not null,
+  user_name text unique not null,
   user_password text not null
 );
+
+drop table if exists post;
+CREATE TABLE post (
+  post_id INTEGER PRIMARY KEY AUTOINCREMENT,
+  post_author_id INTEGER NOT NULL,
+  post_created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  post_title TEXT NOT NULL,
+  post_body TEXT NOT NULL,
+  FOREIGN KEY (post_author_id) REFERENCES user (user_id)
+);
+
+
 --Basic info about an item
 drop table if exists item;
 create table item (

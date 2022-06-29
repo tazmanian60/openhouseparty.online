@@ -1,5 +1,6 @@
 {% extends "layout.html" %}
 {% block body %}
+
         <ul class=items>
                 <li><h2>Dashboard</h2>
                 <li><b>Landing Page</b>
@@ -13,6 +14,7 @@
                 </br>
                 <a href="{{ url_for('mediaserver_settings') }}">Settings</a>
                 </br>
+                <a href="{{ url_for('register') }}">Upload a File</a>
                 </br>
         </ul>
 {% endblock %}

@@ -1,13 +1,10 @@
 # all the imports
 import os, time
 from datetime import date
-import sqlite3
-import sys
-from flask import Flask, request, session, g, redirect, url_for, abort, \
+from flask import Flask, request, session, redirect, url_for, abort, \
      render_template, flash, send_from_directory
 from werkzeug.utils import secure_filename
-from flask_script import Manager, Server
-
+from flaskr.db import get_db
 
 """ ---------------- ---------------- App Init ---------------- ---------------- """
 UPLOAD_FOLDER = 'c:/Users/Joseph/Downloads/Media_Server_Upload'
@@ -40,46 +37,14 @@ def allowed_file(filename):
 
 
 
-""" ---------------- ---------------- Database Functions ---------------- ---------------- """
-def connect_db():
-    #Connects to the specific database
-    rv = sqlite3.connect(app.config['DATABASE'])
-    rv.row_factory = sqlite3.Row
-    return rv
 
-def get_db():
-    #Opens a new database connection if there is none yet for the current application context
-    if not hasattr(g, 'sqlite_db'):
-        g.sqlite_db = connect_db()
-    return g.sqlite_db
-
-@app.teardown_appcontext
-def close_db(error):
-    #Closes the database again at the end of the request
-    if hasattr(g, 'sqlite_db'):
-        g.sqlite_db.close()
-
-
-def init_db():
-    db = get_db()
-    with app.open_resource('schema.sql', mode='r') as f:
-        db.cursor().executescript(f.read())
-    #db.execute('PRAGMA FOREIGN_KEYS=ON')
-    #db.execute('PRAGMA foreign_keys  = "1"')
-    db.commit()
-
-@app.cli.command('initdb')
-def initdb_command():
-    #Initializes the database
-    init_db()
-    print('Initialized the database.')
 
 
 
 
 
 """ ---------------- ---------------- General Functions ---------------- ---------------- """
-#Login
+# Login
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     error = None
@@ -91,18 +56,23 @@ def login():
         else:
             session['logged_in'] = True
             flash('You were logged in')
-            
-            #return redirect(url_for('item_list'))
+
+            # return redirect(url_for('item_list'))
             return render_template('dashboard.html')
     return render_template('login.html', error=error)
 
-#Logout
+
+# Logout
 @app.route('/logout')
 def logout():
     session.pop('logged_in', None)
     flash('You were logged out')
-    #return redirect(url_for('item_list'))
+    # return redirect(url_for('item_list'))
     return render_template('dashboard.html')
+
+
+
+
 
     
 #Get row count of a table
