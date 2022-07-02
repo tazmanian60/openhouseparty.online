@@ -3,7 +3,10 @@ drop table if exists user;
 create table user (
   user_id integer primary key autoincrement,
   user_name text unique not null,
-  user_password text not null
+  user_password text not null,
+  user_firstname,
+  user_lastname,
+  user_email
 );
 
 drop table if exists post;
@@ -15,6 +18,9 @@ CREATE TABLE post (
   post_body TEXT NOT NULL,
   FOREIGN KEY (post_author_id) REFERENCES user (user_id)
 );
+
+
+
 
 
 --Basic info about an item

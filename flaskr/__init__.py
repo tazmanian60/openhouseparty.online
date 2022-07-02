@@ -48,4 +48,17 @@ def create_app(test_config=None):
     from . import admin
     app.register_blueprint(admin.bp)
 
+    from . import about
+    app.register_blueprint(about.bp)
+
+    from . import contact_us
+    app.register_blueprint(contact_us.bp)
+
+    from . import services
+    app.register_blueprint(services.bp)
+
+    from . import user_edit
+    app.register_blueprint(user_edit.bp)
+
+
     return app

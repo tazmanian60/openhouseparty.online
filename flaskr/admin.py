@@ -22,13 +22,19 @@ def get_users():
         ' FROM user'
     ).fetchall()
 
-    return  render_template('admin/user_list.html', users=users)
+    return render_template('admin/user_list.html', users=users)
 
 @bp.route('/user_delete', methods=['POST'])
 def delete_user():
     db = get_db()
     db.execute(
-        'DELETE FROM user WHERE user_id = ?',[request.form['user_to_delete']]
+        'DELETE FROM user WHERE user_id = ?', [request.form['user_to_delete']]
     )
     db.commit()
     return redirect(url_for('admin.index'))
+
+#@bp.route('/user_update/<int:user_id>', methods=['POST'])
+@bp.route('/user_update', methods=['POST'])
+def update_user():
+
+    return render_template('admin/user_edit.html', user_id=request.form['user_to_edit'])
