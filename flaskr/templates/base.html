@@ -21,13 +21,35 @@
     }
   </style>
   </head>
+  <div class="dropdown">
+    <button class=dropbtn">More
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="{{ url_for('faq.index') }}">FAQ</a>
+      <a href="{{ url_for('resources.index') }}">Resources</a>
+    </div>
+  </div>
   <body>
   <ul>
-    <li><a href="{{ url_for('blog.index') }}">Blog</a></li>
-    <li><a href="{{ url_for('dashboard.index') }}">Dashboard</a></li>
-    <li><a href="{{ url_for('about.index') }}">About</a></li>
-    <li><a href="{{ url_for('contact_us.index') }}">Contact Us</a></li>
-    <li><a href="{{ url_for('services.index') }}">Services</a></li>
+    {% if g.user %}
+      <li><a href="{{ url_for('dashboard.index') }}">Dashboard</a></li>
+      <li><a href="{{ url_for('home.index') }}">Home</a></li>
+      <li><a href="{{ url_for('blog.index') }}">Blog</a></li>
+      <li><a href="{{ url_for('about.index') }}">About</a></li>
+      <li><a href="{{ url_for('contact_us.index') }}">Contact Us</a></li>
+      <li><a href="{{ url_for('services.index') }}">Services</a></li>
+      <li><a href="{{ url_for('testimonials.index') }}">Testimonials</a></li>
+      <li><a href="{{ url_for('store.index') }}">Store</a></li>
+    {% else %}
+      <li><a href="{{ url_for('home.index') }}">Home</a></li>
+      <li><a href="{{ url_for('blog.index') }}">Blog</a></li>
+      <li><a href="{{ url_for('about.index') }}">About</a></li>
+      <li><a href="{{ url_for('contact_us.index') }}">Contact Us</a></li>
+      <li><a href="{{ url_for('services.index') }}">Services</a></li>
+      <li><a href="{{ url_for('testimonials.index') }}">Testimonials</a></li>
+      <li><a href="{{ url_for('store.index') }}">Store</a></li>
+    {% endif %}
   </ul>
   </body>
 

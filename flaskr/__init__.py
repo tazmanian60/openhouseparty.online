@@ -41,8 +41,8 @@ def create_app(test_config=None):
     app.register_blueprint(blog.bp)
 
 
-    from . import dashboard
-    app.register_blueprint(dashboard.bp)
+    from . import home
+    app.register_blueprint(home.bp)
     app.add_url_rule('/', endpoint='index')
 
     from . import admin
@@ -59,6 +59,21 @@ def create_app(test_config=None):
 
     from . import user_edit
     app.register_blueprint(user_edit.bp)
+
+    from . import testimonials
+    app.register_blueprint(testimonials.bp)
+
+    from . import dashboard
+    app.register_blueprint(dashboard.bp)
+
+    from . import store
+    app.register_blueprint(store.bp)
+
+    from . import resources
+    app.register_blueprint(resources.bp)
+
+    from . import faq
+    app.register_blueprint(faq.bp)
 
 
     return app
