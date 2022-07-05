@@ -1,5 +1,5 @@
 <!doctype html>
-<title>{% block title %}{% endblock %} - Flaskr</title>
+<title>{% block title %}{% endblock %}</title>
 <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 <img src="static\houseparty.png" alt="Site Logo" width="100" height="100">
 <nav>
@@ -75,7 +75,7 @@
   {% endfor %}
   {% block content %}{% endblock %}
 </section>
-<bottom>
+<section class="bottom">
   <ul>
     <dt>Address: 22278 County Road V, Archbold, Ohio 43502 United States
     <dt>Phone Number: (616) 422-1226
@@ -104,4 +104,4 @@
       </a>
     </li>
   </ul2>
-</bottom>
+</section>

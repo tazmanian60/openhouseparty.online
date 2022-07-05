@@ -1,5 +1,6 @@
 html { font-family: sans-serif; background: #eee; padding: 1rem; }
-body { max-width: 960px; margin: 0 auto; background: white; }
+/* body { max-width: 960px; margin: 0 auto; background: white; } */
+body { max-width: 90%; margin: 0 auto;  }
 h1 { font-family: serif; color: #377ba8; margin: 1rem 0; }
 a { color: #377ba8; }
 hr { border: none; border-top: 1px solid lightgray; }
@@ -24,7 +25,71 @@ nav ul li a, nav ul li span, header .action { display: block; padding: 0.5rem; }
 .content textarea { min-height: 12em; resize: vertical; }
 input.danger { color: #cc2f2e; }
 input[type=submit] { align-self: start; min-width: 10em; }
-bottom { background: lightyellow; display: flex; align-items: center; padding: 0 0.5rem; }
+.bottom { background: lightyellow; display: flex; align-items: center; padding: 0 0.5rem; }
+
+p2 {background-color: black; color: orange; font-size: 30px; }
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.mainX {
+    display: block;
+    height: 650px;
+    align-items: center;
+}
+.mainX .main_left {
+    float: left;
+    width: 550px;
+    height: 600px;
+
+}
+
+.mainX .main_left2 {
+    float: left;
+    width: 400px;
+    height: 600px;
+    background: black;
+    color: orange;
+    text-align: center;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+.mainX .main_left2 .fontSizeX {
+    font-size: 30px;
+}
+
+.mainX .main_left3 {
+    float: left;
+    width: 550px;
+    height: 600px;
+    overflow: hidden;
+}
+
+
+.homeX {
+    background-image: url("/static/home_party_house_kit.png");
+    background-repeat: no-repeat;
+
+
+}
+.homeX2 {
+    height: 600px;
+}
+
+/*
+.mainX .main_left {
+    display: block;
+    margin-left: auto;
+}
+
+.mainX .main_right {
+    display: block;
+    margin-right: auto;
+}
+*/
 
 /* The dropdown container */
 .dropdown {
