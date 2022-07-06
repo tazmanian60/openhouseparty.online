@@ -29,7 +29,7 @@ def register():
         if error is None:
             try:
                 db.execute(
-                    "INSERT INTO user (user_name, user_password) VALUES (?, ?)",
+                    "INSERT INTO xuser (xuser_username, xuser_password) VALUES (?, ?)",
                     (username, generate_password_hash(password)),
                 )
                 db.commit()
@@ -52,17 +52,17 @@ def login():
         db = get_db()
         error = None
         user = db.execute(
-            'SELECT * FROM user WHERE user_name = ?', (username,)
+            'SELECT * FROM xuser WHERE xuser_username = ?', (username,)
         ).fetchone()
 
         if user is None:
             error = 'Incorrect username.'
-        elif not check_password_hash(user['user_password'], password):
+        elif not check_password_hash(user['xuser_password'], password):
             error = 'Incorrect password.'
 
         if error is None:
             session.clear()
-            session['user_id'] = user['user_id']
+            session['xuser_id'] = user['xuser_id']
             return redirect(url_for('index'))
 
         flash(error)
@@ -73,13 +73,13 @@ def login():
 
 @bp.before_app_request
 def load_logged_in_user():
-    user_id = session.get('user_id')
+    user_id = session.get('xuser_id')
 
     if user_id is None:
         g.user = None
     else:
         g.user = get_db().execute(
-            'SELECT * FROM user WHERE user_id = ?', (user_id,)
+            'SELECT * FROM xuser WHERE xuser_id = ?', (user_id,)
         ).fetchone()
 
 

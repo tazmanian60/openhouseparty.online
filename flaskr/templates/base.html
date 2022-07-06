@@ -21,15 +21,7 @@
     }
   </style>
   </head>
-  <div class="dropdown">
-    <button class=dropbtn">More
-      <i class="fa fa-caret-down"></i>
-    </button>
-    <div class="dropdown-content">
-      <a href="{{ url_for('faq.index') }}">FAQ</a>
-      <a href="{{ url_for('resources.index') }}">Resources</a>
-    </div>
-  </div>
+
   <body>
   <ul>
     {% if g.user %}
@@ -50,12 +42,22 @@
       <li><a href="{{ url_for('testimonials.index') }}">Testimonials</a></li>
       <li><a href="{{ url_for('store.index') }}">Store</a></li>
     {% endif %}
+
   </ul>
+        <div class="dropdown">
+    <button class=dropbtn">More
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="{{ url_for('faq.index') }}">FAQ</a>
+      <a href="{{ url_for('resources.index') }}">Resources</a>
+    </div>
+  </div>
   </body>
 
   <ul>
     {% if g.user %}
-      <li><span>{{ g.user['user_name'] }}</span>
+      <li><span>{{ g.user['xuser_username'] }}</span>
       <li><a href="{{ url_for('auth.logout') }}">Log Out</a>
     {% else %}
       <li><a href="{{ url_for('auth.register') }}">Register</a>

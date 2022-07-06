@@ -3,10 +3,17 @@ drop table if exists user;
 create table user (
   user_id integer primary key autoincrement,
   user_name text unique not null,
-  user_password text not null,
-  user_firstname,
-  user_lastname,
-  user_email
+  user_password text not null
+);
+
+drop table if exists xuser;
+create table xuser (
+  xuser_id integer primary key autoincrement,
+  xuser_username text unique not null,
+  xuser_password text not null,
+  xuser_firstname,
+  xuser_lastname,
+  xuser_email
 );
 
 drop table if exists post;
