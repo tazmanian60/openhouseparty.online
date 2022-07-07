@@ -23,7 +23,8 @@ CREATE TABLE post (
   post_created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   post_title TEXT NOT NULL,
   post_body TEXT NOT NULL,
-  FOREIGN KEY (post_author_id) REFERENCES user (user_id)
+  post_shortbody TEXT NOT NULL,
+  FOREIGN KEY (post_author_id) REFERENCES xuser (xuser_id)
 );
 
 

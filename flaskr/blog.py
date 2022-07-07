@@ -13,7 +13,7 @@ bp = Blueprint('blog', __name__)
 def index():
     db = get_db()
     posts = db.execute(
-        'SELECT p.post_id, post_title, post_body, post_created, post_author_id, xuser_username'
+        'SELECT p.post_id, post_title, post_body, post_shortbody, post_created, post_author_id, xuser_username'
         ' FROM post p JOIN xuser u ON p.post_author_id = u.xuser_id'
         ' ORDER BY post_created DESC'
     ).fetchall()
@@ -27,6 +27,7 @@ def create():
         title = request.form['title']
         body = request.form['body']
         error = None
+        short_body = body[0:100]
 
         if not title:
             error = 'Title is required.'
@@ -36,9 +37,9 @@ def create():
         else:
             db = get_db()
             db.execute(
-                'INSERT INTO post (post_title, post_body, post_author_id)'
-                ' VALUES (?, ?, ?)',
-                (title, body, g.user['xuser_id'])
+                'INSERT INTO post (post_title, post_body, post_shortbody, post_author_id)'
+                ' VALUES (?, ?, ?, ?)',
+                (title, body, short_body, g.user['xuser_id'])
             )
             db.commit()
             return redirect(url_for('blog.index'))
@@ -61,6 +62,26 @@ def get_post(id, check_author=True):
         abort(403)
 
     return post
+
+
+def get_post_view(id):
+    post = get_db().execute(
+        'SELECT p.post_id, post_title, post_body, post_created, post_author_id, xuser_username'
+        ' FROM post p JOIN xuser u ON p.post_author_id = u.xuser_id'
+        ' WHERE p.post_id = ?',
+        (id,)
+    ).fetchone()
+
+    if post is None:
+        abort(404, f"Post id {id} doesn't exist.")
+
+    return post
+
+@bp.route('/<int:id>/view', methods=('GET', 'POST'))
+def view(id):
+    post = get_post_view(id)
+
+    return render_template('blog/view_post.html', post=post)
 
 
 @bp.route('/<int:id>/update', methods=('GET', 'POST'))
