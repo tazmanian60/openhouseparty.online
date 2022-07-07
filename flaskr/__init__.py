@@ -57,9 +57,6 @@ def create_app(test_config=None):
     from . import services
     app.register_blueprint(services.bp)
 
-    from . import user_edit
-    app.register_blueprint(user_edit.bp)
-
     from . import testimonials
     app.register_blueprint(testimonials.bp)
 

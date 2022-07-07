@@ -13,8 +13,8 @@ bp = Blueprint('blog', __name__)
 def index():
     db = get_db()
     posts = db.execute(
-        'SELECT p.post_id, post_title, post_body, post_created, post_author_id, user_name'
-        ' FROM post p JOIN user u ON p.post_author_id = u.user_id'
+        'SELECT p.post_id, post_title, post_body, post_created, post_author_id, xuser_username'
+        ' FROM post p JOIN xuser u ON p.post_author_id = u.xuser_id'
         ' ORDER BY post_created DESC'
     ).fetchall()
     return render_template('blog/index.html', posts=posts)
@@ -48,8 +48,8 @@ def create():
 
 def get_post(id, check_author=True):
     post = get_db().execute(
-        'SELECT p.post_id, post_title, post_body, post_created, post_author_id, user_name'
-        ' FROM post p JOIN user u ON p.post_author_id = u.user_id'
+        'SELECT p.post_id, post_title, post_body, post_created, post_author_id, xuser_username'
+        ' FROM post p JOIN xuser u ON p.post_author_id = u.xuser_id'
         ' WHERE p.post_id = ?',
         (id,)
     ).fetchone()

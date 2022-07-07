@@ -3,7 +3,7 @@ from flask import (
 )
 from flaskr.auth import login_required
 from flaskr.db import get_db
-
+from werkzeug.security import generate_password_hash, check_password_hash
 
 bp = Blueprint('admin', __name__)
 
@@ -33,16 +33,9 @@ def delete_user():
     db.commit()
     return redirect(url_for('admin.index'))
 
-#@bp.route('/user_update/<int:user_id>', methods=['POST'])
-#@bp.route('/<int:user_id>/user_update', methods=('GET', 'POST'))
-#def update_user(user_id):
-
-#    return render_template('admin/user_edit.html', user_id=request.form['user_to_edit'])
-
-
 def get_user(user_id):
     user = get_db().execute(
-        'SELECT xuser_id, xuser_username, xuser_firstname, xuser_lastname, xuser_email'
+        'SELECT xuser_id, xuser_username, xuser_password, xuser_firstname, xuser_lastname, xuser_email'
         ' FROM xuser'
         ' WHERE xuser_id = ?',
         (user_id,)
@@ -53,29 +46,29 @@ def get_user(user_id):
 
 @bp.route('/<int:user_id>/user_update', methods=['GET', 'POST'])
 @login_required
-def update_userInfo(user_id):
-    #user_id = request.form['user_to_edit']
-    print("AAAAA")
-    print(user_id)
-    print("AAAAA")
+def update_user(user_id):
     user = get_user(user_id)
     if request.method == 'POST':
         username = request.form['username']
         firstname = request.form['firstname']
         lastname = request.form['lastname']
         email = request.form['email']
+        password = request.form['password']
         error = None
 
         if not username:
             error = 'Username is required.'
+        elif not password:
+            error = 'Password is required.'
 
         if error is not None:
             flash(error)
         else:
             db = get_db()
             db.execute(
-                'UPDATE xuser SET xuser_username = ?, xuser_firstname = ?, xuser_lastname = ?, xuser_email = ? WHERE xuser_id = ?',
+                'UPDATE xuser SET xuser_username = ?, xuser_password = ?, xuser_firstname = ?, xuser_lastname = ?, xuser_email = ? WHERE xuser_id = ?',
                 [username,
+                 generate_password_hash(password),
                  firstname,
                  lastname,
                  email,
