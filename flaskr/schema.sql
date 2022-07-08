@@ -24,6 +24,7 @@ CREATE TABLE post (
   post_title TEXT NOT NULL,
   post_body TEXT NOT NULL,
   post_shortbody TEXT NOT NULL,
+  post_images TEXT,
   FOREIGN KEY (post_author_id) REFERENCES xuser (xuser_id)
 );
 
