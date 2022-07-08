@@ -79,7 +79,7 @@ def create():
 
 def get_post(id, check_author=True):
     post = get_db().execute(
-        'SELECT p.post_id, post_title, post_body, post_created, post_author_id, xuser_username'
+        'SELECT p.post_id, post_title, post_body, post_created, post_images, post_author_id, xuser_username'
         ' FROM post p JOIN xuser u ON p.post_author_id = u.xuser_id'
         ' WHERE p.post_id = ?',
         (id,)
@@ -145,7 +145,15 @@ def update(id):
 @bp.route('/<int:id>/delete', methods=('POST',))
 @login_required
 def delete(id):
-    get_post(id)
+    post = get_post(id)
+
+    dirname = os.path.dirname(__file__)
+    upload_folder = os.path.join(dirname, 'upload')
+    file_to_delete = os.path.join(upload_folder, post['post_images'])
+    os.remove(file_to_delete)
+
+
+
     db = get_db()
     db.execute('DELETE FROM post WHERE post_id = ?', (id,))
     db.commit()
