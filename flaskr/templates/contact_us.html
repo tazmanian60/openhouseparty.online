@@ -5,6 +5,7 @@
 {% endblock %}
 
 {% block content %}
+<section class="post">
   <form method="post">
     <label for="name">Name</label>
     <input name="name" id="name" value="{{ request.form['name'] }}" required>
@@ -16,4 +17,5 @@
     <textarea name="body" id="body">{{ request.form['body'] }}</textarea>
     <input type="submit" value="Submit">
   </form>
+</section>
 {% endblock %}
