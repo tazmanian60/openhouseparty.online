@@ -18,6 +18,10 @@ def index():
         ' FROM post p JOIN xuser u ON p.post_author_id = u.xuser_id'
         ' ORDER BY post_created DESC'
     ).fetchall()
+
+    #print("AAAAAAAAAAAAAA")
+    #print(posts[0][4])
+    #print("AAAAAAAAAAAAAA")
     return render_template('blog/index.html', posts=posts)
 
 
@@ -48,31 +52,51 @@ def create():
         #if "file1" not in request.files:
         #    return "there is no file1 in form!"
         file1 = request.files["file1"]
-        path = os.path.join(upload_folder, file1.filename)
-        file1.save(path)
+        if file1.filename != '':
+            path = os.path.join(upload_folder, file1.filename)
+            file1.save(path)
 
+            title = request.form['title']
+            body = request.form['body']
+            error = None
+            short_body = body[0:100]
 
+            if not title:
+                error = 'Title is required.'
 
+            if error is not None:
+                flash(error)
+            else:
+                db = get_db()
+                db.execute(
+                    'INSERT INTO post (post_title, post_body, post_shortbody, post_images, post_author_id)'
+                    ' VALUES (?, ?, ?, ?, ?)',
+                    (title, body, short_body, file1.filename, g.user['xuser_id'])
+                )
+                db.commit()
+                return redirect(url_for('blog.index'))
 
-        title = request.form['title']
-        body = request.form['body']
-        error = None
-        short_body = body[0:100]
-
-        if not title:
-            error = 'Title is required.'
-
-        if error is not None:
-            flash(error)
         else:
-            db = get_db()
-            db.execute(
-                'INSERT INTO post (post_title, post_body, post_shortbody, post_images, post_author_id)'
-                ' VALUES (?, ?, ?, ?, ?)',
-                (title, body, short_body, file1.filename, g.user['xuser_id'])
-            )
-            db.commit()
-            return redirect(url_for('blog.index'))
+            title = request.form['title']
+            body = request.form['body']
+            error = None
+            short_body = body[0:100]
+
+            if not title:
+                error = 'Title is required.'
+
+            if error is not None:
+                flash(error)
+            else:
+                db = get_db()
+                db.execute(
+                    'INSERT INTO post (post_title, post_body, post_shortbody, post_author_id)'
+                    ' VALUES (?, ?, ?, ?)',
+                    (title, body, short_body, g.user['xuser_id'])
+                )
+                db.commit()
+                return redirect(url_for('blog.index'))
+
 
     return render_template('blog/create.html')
 
@@ -123,6 +147,7 @@ def update(id):
         title = request.form['title']
         body = request.form['body']
         error = None
+        short_body = body[0:100]
 
         if not title:
             error = 'Title is required.'
@@ -132,9 +157,9 @@ def update(id):
         else:
             db = get_db()
             db.execute(
-                'UPDATE post SET post_title = ?, post_body = ?'
+                'UPDATE post SET post_title = ?, post_shortbody = ?, post_body = ?'
                 ' WHERE post_id = ?',
-                (title, body, id)
+                (title, body, short_body, id)
             )
             db.commit()
             return redirect(url_for('blog.index'))

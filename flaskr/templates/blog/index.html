@@ -19,7 +19,9 @@
           <a class="action" href="{{ url_for('blog.update', id=post['post_id']) }}">Edit</a>
         {% endif %}
       </header>
-      <img src="{{url_for('blog.send_uploaded_file', filename=post['post_images']) }}" width="25%" height="25%"/>
+      {% if post['post_images'] != None %}
+        <img src="{{url_for('blog.send_uploaded_file', filename=post['post_images']) }}" width="25%" height="25%"/>
+      {% endif %}
       <p class="body">{{ post['post_shortbody'] }}</p>
     </article>
     {% if not loop.last %}

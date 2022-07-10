@@ -31,7 +31,7 @@ def delete_user():
         'DELETE FROM xuser WHERE xuser_id = ?', [request.form['user_to_delete']]
     )
     db.commit()
-    return redirect(url_for('admin.index'))
+    return redirect(url_for('admin.get_users'))
 
 def get_user(user_id):
     user = get_db().execute(
