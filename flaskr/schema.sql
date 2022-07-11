@@ -16,6 +16,23 @@ create table xuser (
   xuser_email
 );
 
+drop table if exists item;
+create table item (
+  item_id integer primary key autoincrement,
+  item_name text not null,
+  item_price numeric not null,
+  item_description text not null
+);
+
+drop table if exists message;
+create table message (
+  message_id integer primary key autoincrement,
+  message_name text not null,
+  message_email text not null,
+  message_subject text not null,
+  message_body text not null
+);
+
 drop table if exists post;
 CREATE TABLE post (
   post_id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -33,19 +50,19 @@ CREATE TABLE post (
 
 
 --Basic info about an item
-drop table if exists item;
-create table item (
-  item_id integer primary key autoincrement,
-  item_name text,
-  item_subtitle text,
-  item_desc text,
-  item_category text,
-  item_condition text,
-  item_conditionDesc text,
-  item_cost numeric,
-  item_returnPolicyDesc text,
-  item_insertDate datetime
-);
+--drop table if exists item;
+--create table item (
+--  item_id integer primary key autoincrement,
+--  item_name text,
+--  item_subtitle text,
+--  item_desc text,
+--  item_category text,
+--  item_condition text,
+--  item_conditionDesc text,
+--  item_cost numeric,
+--  item_returnPolicyDesc text,
+--  item_insertDate datetime
+--);
 
 
 --File Upload/Download Data

@@ -78,3 +78,24 @@ def update_user(user_id):
             return redirect(url_for('admin.index'))
 
     return render_template('admin/user_edit.html', user=user)
+
+
+@bp.route('/messages')
+@login_required
+def get_messages():
+    db = get_db()
+    messages = db.execute(
+        'SELECT message_id, message_name, message_email, message_subject, message_body'
+        ' FROM message'
+    ).fetchall()
+
+    return render_template('admin/messages.html', messages=messages)
+
+@bp.route('/message_delete', methods=['POST'])
+def delete_message():
+    db = get_db()
+    db.execute(
+        'DELETE FROM message WHERE message_id = ?', [request.form['message_to_delete']]
+    )
+    db.commit()
+    return redirect(url_for('admin.get_messages'))
