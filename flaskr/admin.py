@@ -92,6 +92,7 @@ def get_messages():
     return render_template('admin/messages.html', messages=messages)
 
 @bp.route('/message_delete', methods=['POST'])
+@login_required
 def delete_message():
     db = get_db()
     db.execute(
