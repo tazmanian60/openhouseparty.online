@@ -21,6 +21,7 @@ def register():
         firstname = request.form['firstname']
         lastname = request.form['lastname']
         email = request.form['email']
+        registration_code = request.form['registration_code']
         db = get_db()
         error = None
 
@@ -28,6 +29,10 @@ def register():
             error = 'Username is required.'
         elif not password:
             error = 'Password is required.'
+        elif not registration_code:
+            error = 'Registration code is required.'
+        elif not registration_code == "OpenHouseParty":
+            error = 'Invalid registration code.'
 
         if error is None:
             try:

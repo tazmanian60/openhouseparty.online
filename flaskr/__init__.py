@@ -74,5 +74,6 @@ def create_app(test_config=None):
     from . import faq
     app.register_blueprint(faq.bp)
 
-
+    from . import support
+    app.register_blueprint(support.bp)
     return app
