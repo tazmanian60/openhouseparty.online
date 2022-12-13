@@ -22,6 +22,7 @@ flaskrOpenHousePartyWebsite.egg-info/SOURCES.txt
 flaskrOpenHousePartyWebsite.egg-info/dependency_links.txt
 flaskrOpenHousePartyWebsite.egg-info/requires.txt
 flaskrOpenHousePartyWebsite.egg-info/top_level.txt
+flaskr/static/OHP_Logo.jpg
 flaskr/static/breaking_the_law.png
 flaskr/static/brian_fleming.png
 flaskr/static/chas_portrait.png
