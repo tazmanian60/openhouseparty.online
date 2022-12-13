@@ -1,7 +1,7 @@
 <!doctype html>
 <title>{% block title %}{% endblock %}</title>
 <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-<img src="\static\houseparty.png" alt="Site Logo" width="100" height="100">
+<img src="\static\OHP_Logo.png" alt="Site Logo" width="100" height="100">
 <nav>
   <h1>Open House Party</h1>
   <head>
@@ -34,7 +34,7 @@
       <li><a href="{{ url_for('services.index') }}">Services</a></li>
       <li><a href="{{ url_for('testimonials.index') }}">Testimonials</a></li>
       <li><a href="{{ url_for('store.index') }}">Store</a></li>
-      <li><a href="{{ url_for('support.index') }}">Support</a></li>
+      <li><a href="{{ url_for('support.index') }}">Support Us</a></li>
     {% else %}
       <li><a href="{{ url_for('home.index') }}">Home</a></li>
       <li><a href="{{ url_for('blog.index') }}">Blog</a></li>
@@ -43,7 +43,7 @@
       <li><a href="{{ url_for('services.index') }}">Services</a></li>
       <li><a href="{{ url_for('testimonials.index') }}">Testimonials</a></li>
       <li><a href="{{ url_for('store.index') }}">Store</a></li>
-      <li><a href="{{ url_for('support.index') }}">Support</a></li>
+      <li><a href="{{ url_for('support.index') }}">Support Us</a></li>
     {% endif %}
 
   </ul>
