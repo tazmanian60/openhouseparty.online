@@ -1,7 +1,0 @@
-MANIFEST.in
-setup.py
-flaskr_Open_House_Party_website.egg-info/PKG-INFO
-flaskr_Open_House_Party_website.egg-info/SOURCES.txt
-flaskr_Open_House_Party_website.egg-info/dependency_links.txt
-flaskr_Open_House_Party_website.egg-info/requires.txt
-flaskr_Open_House_Party_website.egg-info/top_level.txt
