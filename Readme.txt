@@ -11,3 +11,5 @@ username for testing is:
 admin
 password for 'admin' user is:
 testing
+
+Test1234
