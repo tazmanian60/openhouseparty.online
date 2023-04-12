@@ -1,25 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e00b4877-6392-4152-a4a7-f9ffd3e1faca" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/lib/flaskr/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/lib/flaskr/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flaskr/dist/flaskrOpenHousePartyWebsite-1.0.0-py3-none-any.whl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flaskr/dist/flaskr_Open_House_Party_website-1.0.0-py3-none-any.whl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flaskr/flaskrOpenHousePartyWebsite.egg-info/PKG-INFO" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flaskr/flaskrOpenHousePartyWebsite.egg-info/SOURCES.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flaskr/flaskrOpenHousePartyWebsite.egg-info/dependency_links.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flaskr/flaskrOpenHousePartyWebsite.egg-info/requires.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flaskr/flaskrOpenHousePartyWebsite.egg-info/top_level.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flaskr/flaskr_Open_House_Party_website.egg-info/PKG-INFO" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flaskr/flaskr_Open_House_Party_website.egg-info/SOURCES.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flaskr/flaskr_Open_House_Party_website.egg-info/dependency_links.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flaskr/flaskr_Open_House_Party_website.egg-info/requires.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flaskr/flaskr_Open_House_Party_website.egg-info/top_level.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flaskr/templates/support.html" beforeDir="false" afterPath="$PROJECT_DIR$/flaskr/templates/support.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flaskrOpenHousePartyWebsite.egg-info/PKG-INFO" beforeDir="false" afterPath="$PROJECT_DIR$/flaskrOpenHousePartyWebsite.egg-info/PKG-INFO" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
-    </list>
+    <list default="true" id="e00b4877-6392-4152-a4a7-f9ffd3e1faca" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,8 +34,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/flaskr/templates/support.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="320">
-              <caret line="16" column="33" lean-forward="true" selection-start-line="16" selection-start-column="33" selection-end-line="16" selection-end-column="33" />
+            <state relative-caret-position="340">
+              <caret line="17" column="25" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -717,8 +699,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/flaskr/templates/support.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="16" column="33" lean-forward="true" selection-start-line="16" selection-start-column="33" selection-end-line="16" selection-end-column="33" />
+        <state relative-caret-position="340">
+          <caret line="17" column="25" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
         </state>
       </provider>
     </entry>
