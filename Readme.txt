@@ -13,3 +13,4 @@ password for 'admin' user is:
 testing
 
 Test1234
+Test1234
