@@ -76,4 +76,8 @@ def create_app(test_config=None):
 
     from . import support
     app.register_blueprint(support.bp)
+
+    from . import community
+    app.register_blueprint(community.bp)
+
     return app

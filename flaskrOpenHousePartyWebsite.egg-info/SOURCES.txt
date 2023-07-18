@@ -5,6 +5,7 @@ flaskr/about.py
 flaskr/admin.py
 flaskr/auth.py
 flaskr/blog.py
+flaskr/community.py
 flaskr/contact_us.py
 flaskr/dashboard.py
 flaskr/db.py
@@ -46,6 +47,7 @@ flaskr/static/winter_trees.png
 flaskr/static/youtube_icon.png
 flaskr/templates/about.html
 flaskr/templates/base.html
+flaskr/templates/community.html
 flaskr/templates/contact_us.html
 flaskr/templates/dashboard.html
 flaskr/templates/faq.html
