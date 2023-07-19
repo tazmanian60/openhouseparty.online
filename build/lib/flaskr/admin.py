@@ -85,7 +85,7 @@ def update_user(user_id):
 def get_messages():
     db = get_db()
     messages = db.execute(
-        'SELECT message_id, message_name, message_email, message_subject, message_body'
+        'SELECT message_id, message_name, message_email, message_subject, message_body, message_time'
         ' FROM message'
     ).fetchall()
 

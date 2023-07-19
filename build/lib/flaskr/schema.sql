@@ -30,7 +30,8 @@ create table message (
   message_name text not null,
   message_email text not null,
   message_subject text not null,
-  message_body text not null
+  message_body text not null,
+  message_time text not null
 );
 
 drop table if exists post;

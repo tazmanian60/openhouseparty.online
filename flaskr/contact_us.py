@@ -3,6 +3,7 @@ from flask import (
     Blueprint, flash, g, redirect, render_template, request, url_for
 )
 # import smtplib
+import time
 from flaskr.db import get_db
 
 bp = Blueprint('contact_us', __name__)
@@ -16,6 +17,7 @@ def index():
         email = request.form['email']
         subject = request.form['subject']
         body = request.form['body']
+        timestamp = time.ctime()
 
         #message = "Thank you!"
 
@@ -38,8 +40,8 @@ def index():
 
         if error is None:
                 db.execute(
-                    'INSERT INTO message (message_name, message_email, message_subject, message_body) VALUES (?, ?, ?, ?)',
-                    [name, email, subject, body]
+                    'INSERT INTO message (message_name, message_email, message_subject, message_body, message_time) VALUES (?, ?, ?, ?, ?)',
+                    [name, email, subject, body, timestamp]
                 )
                 db.commit()
 

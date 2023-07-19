@@ -3,6 +3,7 @@ SET FLASK_APP=C:\Users\Joseph\Documents\GitHub\openhouseparty.online\flaskr.py
 
 then init the db:
 flask initdb
+or flask init-db
 
 then start server:
 flask run -h 127.0.0.1 -p 5000
